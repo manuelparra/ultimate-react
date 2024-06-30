@@ -1,13 +1,7 @@
-function App(): JSX.Element {
-  // jsx -> React.createElement()
+import Titulo from "./Titulo";
 
-  const nombre = "Chanchito Feliz";
-
-  if (nombre) {
-    return <p>Hola {nombre}</p>;
-  }
-
-  return <p>Hola Mundo!</p>;
-}
+const App = (): JSX.Element => {
+  return <Titulo />;
+};
 
 export default App;
