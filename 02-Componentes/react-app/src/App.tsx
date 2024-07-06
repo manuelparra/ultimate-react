@@ -1,7 +1,7 @@
-import Titulo from "./Titulo";
+import Card from "./components/Card";
 
 const App = (): JSX.Element => {
-  return <Titulo />;
+  return <Card />;
 };
 
 export default App;
