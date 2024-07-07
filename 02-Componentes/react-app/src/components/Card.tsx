@@ -1,22 +1,40 @@
-function Card(): JSX.Element {
+// code for Card component
+// writed by: Manuel Parra
+// created: 06/07/2024
+// modified: 06/07/2024
+import { Fragment, ReactNode } from "react";
+
+interface CardProps {
+  children: ReactNode;
+}
+
+function Card(props: CardProps): JSX.Element {
+  const { children } = props;
+
   return (
     <>
-      <div className="card">
-        <div className="card-body">
-          <h5 className="card-title">card title</h5>
-          <h6 className="card-subtitle mb-2 text-body-secondary">
-            card subtitle
-          </h6>
-          <p className="card-text">
-            some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-          <a href="#" className="btn btn-primary">
-            Go somewhere
-          </a>
-        </div>
+      <div className="card" style={{ width: "350px" }}>
+        <div className="card-body">{children}</div>
       </div>
     </>
+  );
+}
+
+interface CardBodyProps {
+  title: string;
+  subtitle: string;
+  text: string;
+}
+
+export function CardBody(props: CardBodyProps): JSX.Element {
+  const { title, subtitle, text } = props;
+
+  return (
+    <Fragment>
+      <h5 className="card-title">{title}</h5>
+      <h6 className="card-subtitle mb-2 text-body-secondary">{subtitle}</h6>
+      <p className="card-text">{text}</p>
+    </Fragment>
   );
 }
 
