@@ -2,16 +2,16 @@ import { useState } from "react";
 
 type ListProps = {
   data: string[];
+  onSelect?: (elemento: string) => void;
 };
 
 function List(props: ListProps): JSX.Element {
+  const { data, onSelect } = props;
   const [index, setIndex] = useState(0);
-
-  const { data } = props;
 
   const handleClick = (elemento: string, indice: number): void => {
     setIndex(indice);
-    console.log(elemento);
+    onSelect?.(elemento);
   };
 
   return (

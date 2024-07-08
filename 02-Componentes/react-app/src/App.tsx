@@ -4,6 +4,10 @@ import List from "./components/List";
 const App = (): JSX.Element => {
   const list = ["Goku", "Tanjiro", "Eren", "Vegeta", "Krilin", "Maestro Roshi"];
 
+  const handleSelect = (elemento: string): void => {
+    console.log("imprimiendo", elemento);
+  };
+
   return (
     <Card>
       <CardBody
@@ -11,7 +15,7 @@ const App = (): JSX.Element => {
         subtitle="Subtitulo de mi tarjeta"
         text="Este es el contenido de mi tarjeta."
       />
-      <List data={list} />
+      <List data={list} onSelect={handleSelect} />
     </Card>
   );
 };
