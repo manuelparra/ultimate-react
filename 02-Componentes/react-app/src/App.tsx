@@ -1,7 +1,16 @@
+import { useState } from "react";
 import Card, { CardBody } from "./components/Card";
 import List from "./components/List";
+import Button from "./components/Button";
 
 const App = (): JSX.Element => {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleClick = (): void => {
+    alert("Hola");
+    setIsLoading(!isLoading);
+  };
+
   const list: string[] = [
     "Goku",
     "Tanjiro",
@@ -39,6 +48,10 @@ const App = (): JSX.Element => {
       {contenido}
       <br />
       {masContenido}
+      <br />
+      <Button onClick={handleClick} isLoading={isLoading}>
+        Cargando
+      </Button>
     </Card>
   );
 };
