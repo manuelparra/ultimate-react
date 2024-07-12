@@ -7,7 +7,6 @@ const App = (): JSX.Element => {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleClick = (): void => {
-    alert("Hola");
     setIsLoading(!isLoading);
   };
 
@@ -49,8 +48,8 @@ const App = (): JSX.Element => {
       <br />
       {masContenido}
       <br />
-      <Button onClick={handleClick} isLoading={isLoading}>
-        Cargando
+      <Button handleClick={handleClick} isLoading={isLoading}>
+        {isLoading ? "Cargando..." : "Ejecutar"}
       </Button>
     </Card>
   );

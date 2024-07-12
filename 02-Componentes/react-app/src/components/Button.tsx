@@ -7,12 +7,14 @@ type ButtonProps = {
 };
 
 function Button(props: ButtonProps): JSX.Element {
-  const { children, isLoading } = props;
+  const { children, isLoading, handleClick } = props;
 
   return (
     <button
       type="button"
-      className={`btn btn-${isLoading ? "secundary" : "primary"} `}
+      onClick={handleClick}
+      className={`btn btn-${isLoading ? "secondary" : "primary"}
+							  ${isLoading ? "disabled" : ""}`}
     >
       {children}
     </button>
