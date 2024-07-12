@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Card, { CardBody } from "./components/Card";
 import List from "./components/List";
+// al importar desde la carpeta React buscar el archivo index.tsx automaticamente
 import Button from "./components/Button";
 import SuperButton from "./components/SuperButton";
 

@@ -1,4 +1,6 @@
 import { ReactNode } from "react";
+import "./Button.css";
+import buttonStyles from "./Button.module.css";
 
 type ButtonProps = {
   children: ReactNode;
@@ -14,13 +16,19 @@ const style = {
 function Button(props: ButtonProps): JSX.Element {
   const { children, isLoading, handleClick } = props;
 
+  const className = [
+    `button btn btn-${isLoading ? "secondary" : "primary"} ${
+      isLoading ? "disabled" : ""
+    }`,
+    buttonStyles.button_module,
+  ].join(" ");
+
   return (
     <button
       style={style}
       type="button"
       onClick={handleClick}
-      className={`btn btn-${isLoading ? "secondary" : "primary"}
-							  ${isLoading ? "disabled" : ""}`}
+      className={className}
     >
       {children}
     </button>
