@@ -6,11 +6,17 @@ type ButtonProps = {
   handleClick: () => void;
 };
 
+// inline style no soporta animaciones ni funcionalidades avanzadas de css
+const style = {
+  backgroundColor: "red",
+};
+
 function Button(props: ButtonProps): JSX.Element {
   const { children, isLoading, handleClick } = props;
 
   return (
     <button
+      style={style}
       type="button"
       onClick={handleClick}
       className={`btn btn-${isLoading ? "secondary" : "primary"}
