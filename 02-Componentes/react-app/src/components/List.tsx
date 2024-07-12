@@ -14,19 +14,27 @@ function List(props: ListProps): JSX.Element {
     onSelect?.(elemento);
   };
 
+  const getRandomInt = (max: number): number => {
+    return Math.floor(Math.random() * max);
+  };
+
   return (
     <>
       <ul className="list-group">
-        {data.map(
-          (elemento: string, indice: number): JSX.Element => (
-            <li
-              onClick={(): void => handleClick(elemento, indice)}
-              key={elemento}
-              className={`list-group-item ${index == indice ? "active" : ""}`}
-            >
-              {elemento}
-            </li>
-          ),
+        {data.length !== 0 ? (
+          data.map(
+            (elemento: string, indice: number): JSX.Element => (
+              <li
+                onClick={(): void => handleClick(elemento, indice)}
+                key={elemento.concat(`${getRandomInt(10000)}`)}
+                className={`list-group-item ${index == indice ? "active" : ""}`}
+              >
+                {elemento}
+              </li>
+            ),
+          )
+        ) : (
+          <p>Lista vacia</p>
         )}
       </ul>
     </>

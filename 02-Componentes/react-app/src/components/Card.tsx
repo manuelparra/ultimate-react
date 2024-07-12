@@ -13,7 +13,10 @@ function Card(props: CardProps): JSX.Element {
 
   return (
     <>
-      <div className="card" style={{ width: "350px" }}>
+      <div
+        className="card"
+        style={{ width: "350px", marginLeft: "auto", marginRight: "auto" }}
+      >
         <div className="card-body">{children}</div>
       </div>
     </>
