@@ -1,12 +1,17 @@
 import { useState } from "react";
 import Card, { CardBody } from "./components/Card";
 import List from "./components/List";
+import Alert from "./components/Alert";
+
 // al importar desde la carpeta React buscar el archivo index.tsx automaticamente
-import Button from "./components/Button";
+import Button, { ButtonTwo } from "./components/Button";
 import SuperButton from "./components/SuperButton";
 
 const App = (): JSX.Element => {
   const [isLoading, setIsLoading] = useState(false);
+  const [isLoadingTwo, setIsLoadingTwo] = useState(false);
+  const [isSelected, setIsSelected] = useState(false);
+
   const [dataMinions, setDataMinions] = useState([
     "Kevin",
     "Stuart",
@@ -16,8 +21,16 @@ const App = (): JSX.Element => {
     "Madge",
   ]);
 
+  const handleClickAlert = (): void => {
+    setIsSelected(!isSelected);
+  };
+
   const handleClick = (): void => {
     setIsLoading(!isLoading);
+  };
+
+  const handleClickTwo = (): void => {
+    setIsLoadingTwo(!isLoadingTwo);
   };
 
   const addMinion = (): void => {
@@ -78,6 +91,9 @@ const App = (): JSX.Element => {
             <Button handleClick={handleClick} isLoading={isLoading}>
               {isLoading ? "Cargando..." : "Ejecutar"}
             </Button>
+            <ButtonTwo handleClick={handleClickTwo} isLoadingTwo={isLoadingTwo}>
+              {isLoadingTwo ? "Cargando..." : "Ejecutar"}
+            </ButtonTwo>
           </Card>
         </div>
         <div className="col">
@@ -100,6 +116,11 @@ const App = (): JSX.Element => {
             {minions}
           </Card>
         </div>
+      </div>
+      <div style={{ paddingTop: "10px" }}>
+        <Alert isSelected={isSelected} handleClickAlert={handleClickAlert}>
+          A simple danger alert—check it out!
+        </Alert>
       </div>
     </div>
   );
