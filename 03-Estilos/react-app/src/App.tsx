@@ -2,6 +2,7 @@ import { useState } from "react";
 import Card, { CardBody } from "./components/Card";
 import List from "./components/List";
 import Alert from "./components/Alert";
+import AlertByNS from "./components/AlertByNS";
 
 // al importar desde la carpeta React buscar el archivo index.tsx automaticamente
 import Button, { ButtonTwo } from "./components/Button";
@@ -11,6 +12,7 @@ const App = (): JSX.Element => {
   const [isLoading, setIsLoading] = useState(false);
   const [isLoadingTwo, setIsLoadingTwo] = useState(false);
   const [isSelected, setIsSelected] = useState(false);
+  const [status, setStatus] = useState(false);
 
   const [dataMinions, setDataMinions] = useState([
     "Kevin",
@@ -20,6 +22,10 @@ const App = (): JSX.Element => {
     "Walter",
     "Madge",
   ]);
+
+  const onClick = (): void => {
+    setStatus(!status);
+  };
 
   const handleClickAlert = (): void => {
     setIsSelected(!isSelected);
@@ -121,6 +127,11 @@ const App = (): JSX.Element => {
         <Alert isSelected={isSelected} handleClickAlert={handleClickAlert}>
           A simple danger alert—check it out!
         </Alert>
+      </div>
+      <div>
+        <AlertByNS status={status} onClick={onClick}>
+          Alert
+        </AlertByNS>
       </div>
     </div>
   );
