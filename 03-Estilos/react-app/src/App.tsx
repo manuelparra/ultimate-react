@@ -3,6 +3,7 @@ import Card, { CardBody } from "./components/Card";
 import List from "./components/List";
 import Alert from "./components/Alert";
 import AlertByNS from "./components/AlertByNS";
+import ButtonByNS from "./components/ButtonByNS";
 
 // al importar desde la carpeta React buscar el archivo index.tsx automaticamente
 import Button, { ButtonTwo } from "./components/Button";
@@ -13,6 +14,11 @@ const App = (): JSX.Element => {
   const [isLoadingTwo, setIsLoadingTwo] = useState(false);
   const [isSelected, setIsSelected] = useState(false);
   const [status, setStatus] = useState(false);
+  const [sent, setSent] = useState(false);
+
+  const handleClickButtonNS = (): void => {
+    setSent(true);
+  };
 
   const [dataMinions, setDataMinions] = useState([
     "Kevin",
@@ -132,6 +138,11 @@ const App = (): JSX.Element => {
         <AlertByNS status={status} onClick={onClick}>
           Alert
         </AlertByNS>
+      </div>
+      <div style={{ padding: "20px 10px 20px 10px" }}>
+        <ButtonByNS sent={sent} onClick={handleClickButtonNS}>
+          Enviar
+        </ButtonByNS>
       </div>
     </div>
   );
