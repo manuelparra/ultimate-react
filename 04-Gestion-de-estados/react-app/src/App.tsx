@@ -1,5 +1,9 @@
 import { useState } from "react";
 import Button from "./components/Button";
+import ProductDashboard from "./components/ProductDashboard";
+import ProductList from "./components/ProductList";
+import ButtonDashboard from "./components/ButtonDashboard";
+import Separator from "./components/Separator";
 import "./App.css";
 
 // los hooks no pueden estar fuera de un componente
@@ -8,6 +12,18 @@ import "./App.css";
 // canda vez que se renderiza un componente, se ejecuta todo el código del componente
 
 function App() {
+  // crea array de productos para dashboard
+  const [productos, setProductos] = useState([
+    {
+      id: 1,
+      name: "iPhone",
+    },
+  ]);
+
+  const handleClickButtonDashboard = () => {
+    setProductos([...productos, { id: 2, name: "Samgsun" }]);
+  };
+
   const [count, setCount] = useState(0);
   const [sent, setSent] = useState(false);
 
@@ -90,6 +106,14 @@ function App() {
 
   return (
     <>
+      <div>
+        <ProductDashboard amount={productos.length} />
+        <ButtonDashboard handleClick={handleClickButtonDashboard}>
+          Enviar
+        </ButtonDashboard>
+        <ProductList products={productos} />
+      </div>
+      <Separator />
       <div>
         <button onClick={handleClick}>Enviar</button>
       </div>
