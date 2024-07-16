@@ -1,9 +1,16 @@
 import { useState } from "react";
 import Button from "./components/Button";
+
 import ProductDashboard from "./components/ProductDashboard";
 import ProductList from "./components/ProductList";
 import ButtonDashboard from "./components/ButtonDashboard";
+
 import Separator from "./components/Separator";
+
+import CruscottoProdotti from "./components/CruscottoProdotti";
+import ElencoProdotti from "./components/ElencoProdotti";
+import Pulsante from "./components/Pulsante";
+
 import "./App.css";
 
 // los hooks no pueden estar fuera de un componente
@@ -12,6 +19,43 @@ import "./App.css";
 // canda vez que se renderiza un componente, se ejecuta todo el código del componente
 
 function App() {
+  // crea array de productos "prodotto" para el ejercicio de un segundo dashboard
+  const [prodotti, setProdotti] = useState([
+    {
+      id: Math.random().toString(),
+      name: "iPhone",
+    },
+  ]);
+
+  // función para agregar un prodotto a la lista
+  const aggiungiProdotto = () => {
+    setProdotti([
+      {
+        id: Math.random().toString(),
+        name: "Xiaomi",
+      },
+      ...prodotti,
+    ]);
+  };
+
+  const aggiungiProdottoFinale = () => {
+    setProdotti([
+      ...prodotti,
+      {
+        id: Math.random().toString(),
+        name: "Samsung",
+      },
+    ]);
+  };
+
+  const rimuoviProdotto = () => {
+    setProdotti([...prodotti.slice(0, -1)]);
+  };
+
+  const vacearProdotti = () => {
+    setProdotti([]);
+  };
+
   // crea array de productos para dashboard
   const [productos, setProductos] = useState([
     {
@@ -21,7 +65,7 @@ function App() {
   ]);
 
   const handleClickButtonDashboard = () => {
-    setProductos([...productos, { id: 2, name: "Samgsun" }]);
+    setProductos([...productos, { id: 2, name: "Samsung" }]);
   };
 
   const [count, setCount] = useState(0);
@@ -112,6 +156,15 @@ function App() {
           Enviar
         </ButtonDashboard>
         <ProductList products={productos} />
+      </div>
+      <Separator />
+      <div>
+        <CruscottoProdotti importo={prodotti.length} />
+        <Pulsante gestioneClick={aggiungiProdotto}>Comienzo</Pulsante>
+        <Pulsante gestioneClick={aggiungiProdottoFinale}>Final</Pulsante>
+        <Pulsante gestioneClick={rimuoviProdotto}>Eliminar</Pulsante>
+        <Pulsante gestioneClick={vacearProdotti}>Limpiar</Pulsante>
+        <ElencoProdotti prodotti={prodotti} />
       </div>
       <Separator />
       <div>
