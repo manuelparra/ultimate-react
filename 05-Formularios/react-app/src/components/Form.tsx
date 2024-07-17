@@ -8,10 +8,12 @@ function Form({}: Props) {
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
+
     const user = {
       name: nameRef.current?.value,
       lastName: lastNameRef.current?.value,
     };
+
     console.log("Enviando...", user);
   };
 
