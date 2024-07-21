@@ -1,20 +1,13 @@
-import { FormEvent, useRef } from "react";
+import { FormEvent, useState } from "react";
 
 type Props = {};
 
-function Form({}: Props) {
-  const nameRef = useRef<HTMLInputElement>(null);
-  const lastNameRef = useRef<HTMLInputElement>(null);
+function FormControlled({}: Props) {
+  const [user, setUser] = useState({ name: "", lastname: "" });
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-
-    const user = {
-      name: nameRef.current?.value,
-      lastName: lastNameRef.current?.value,
-    };
-
-    console.log("Enviando...", user);
+    console.log(user);
   };
 
   return (
@@ -23,17 +16,24 @@ function Form({}: Props) {
         <label htmlFor="name" className="form-label">
           Nombre
         </label>
-        <input ref={nameRef} type="text" id="name" className="form-control" />
+        <input
+          type="text"
+          id="name"
+          className="form-control"
+          value={user.name}
+          onChange={(e) => setUser({ ...user, name: e.target.value })}
+        />
       </div>
       <div className="mb-3">
         <label htmlFor="lastname" className="form-label">
           Apellido
         </label>
         <input
-          ref={lastNameRef}
           type="text"
           id="lastname"
           className="form-control"
+          value={user.lastname}
+          onChange={(e) => setUser({ ...user, lastname: e.target.value })}
         />
       </div>
       <button className="btn btn-primary">Enviar</button>
@@ -41,4 +41,4 @@ function Form({}: Props) {
   );
 }
 
-export default Form;
+export default FormControlled;

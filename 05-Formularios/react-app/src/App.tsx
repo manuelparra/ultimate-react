@@ -1,9 +1,21 @@
-import Form from "./components/Form";
+import FormUncontrolled from "./components/FormUncontrolled";
+import FormControlled from "./components/FormControlled";
 
 function App() {
   return (
     <div className="container-sm">
-      <Form />
+      <div className="mt-4">
+        <p>Formulario Uncontrolled</p>
+      </div>
+      <div className="container-fluid">
+        <FormUncontrolled />
+      </div>
+      <div className="mt-4">
+        <p>Formulario Controlado</p>
+      </div>
+      <div className="container-fluid">
+        <FormControlled />
+      </div>
     </div>
   );
 }
