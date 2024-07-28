@@ -1,30 +1,19 @@
 import { useForm } from "react-hook-form";
-import { userSchema } from "../schemas/user";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { userSchema, userForm } from "../schemas/user";
 
-type Props = {};
-
-type Form = {
-  name: string;
-  lastname: string;
-};
-
-function FormReactHookFormZod({}: Props) {
+function FormReactHookFormZod() {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<Form>();
+  } = useForm<userForm>({
+    resolver: zodResolver(userSchema),
+  });
 
-  const onSubmit = (data: Form) => {
-    try {
-      const x = userSchema.parse(data);
-      console.log("estoy imprimiendo zod error");
-      console.log(x);
-    } catch (e) {
-      console.log("estoy imprimiendo el catch error");
-      console.log(e);
-    }
+  console.log(errors);
 
+  const onSubmit = (data: userForm) => {
     console.log(data);
   };
 
@@ -40,6 +29,7 @@ function FormReactHookFormZod({}: Props) {
           id="name"
           className="form-control"
         />
+        {errors?.name?.message ?? <p>{errors?.name?.message}</p>}
       </div>
       <div className="mb-3">
         <label htmlFor="lastname" className="form-label">
@@ -51,6 +41,7 @@ function FormReactHookFormZod({}: Props) {
           id="lastname"
           className="form-control"
         />
+        {errors?.lastname?.message ?? <p>{errors?.lastname?.message}</p>}
       </div>
       <button className="btn btn-primary">Enviar</button>
     </form>
