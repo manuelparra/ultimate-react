@@ -1,6 +1,7 @@
 import FormUncontrolled from "./components/FormUncontrolled";
 import FormControlled from "./components/FormControlled";
 import FormReactHookForm from "./components/FormReactHookForm";
+import FormReactHookFormZod from "./components/FormReactHookFormZod";
 
 function App() {
   return (
@@ -22,6 +23,12 @@ function App() {
       </div>
       <div className="container-fluid">
         <FormReactHookForm />
+      </div>
+      <div className="mt-4">
+        <p>React Hook Form whit Zod</p>
+      </div>
+      <div className="container-fluid">
+        <FormReactHookFormZod />
       </div>
     </div>
   );
