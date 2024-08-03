@@ -8,7 +8,6 @@
   position: relative;
 
   /* prevent grid and flex items for spilling out of their container. */
-
   min-width: 0;
 }
 
