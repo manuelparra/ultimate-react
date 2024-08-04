@@ -12,7 +12,7 @@ export const contactSchema = z.object({
   email: z
     .string()
     .min(1, { message: "Correo requerido" })
-    .email("Cooreo inválido"),
+    .email("Correo inválido"),
 });
 
 export type Contact = z.infer<typeof contactSchema> & { id: string };
