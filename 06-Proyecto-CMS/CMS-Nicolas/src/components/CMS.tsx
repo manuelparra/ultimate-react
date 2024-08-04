@@ -1,6 +1,6 @@
 import { useState } from "react";
 import ContactForm from "./ContactForm";
-import ContactTable from "./ContactTable";
+import ContactsTable from "./ContactsTable";
 import { Contact } from "../schemas/Contact";
 
 function CMS() {
@@ -14,8 +14,6 @@ function CMS() {
     setContacts(contacts.filter((contact) => contact.id !== id));
   };
 
-  console.log(contacts);
-
   return (
     <div className="container">
       <div className="row align-items-center">
@@ -25,7 +23,7 @@ function CMS() {
       </div>
       <div className="row align-items-center">
         <div className="col">
-          <ContactTable />
+          <ContactsTable contacts={contacts} onClick={deleteContact} />
         </div>
       </div>
     </div>
