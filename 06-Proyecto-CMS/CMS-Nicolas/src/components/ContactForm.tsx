@@ -23,11 +23,18 @@ function ContactForm({ onSubmit }: Props) {
           Correo
         </Input>
         <Select
+          name="type"
           label="Tipo de contacto"
           defaultMessage="-- Selecciona tipo --"
           options={contactTypeOptions}
         />
-        <Button>Enviar</Button>
+        <Button type="submit">Enviar</Button>
+        <Button onClick={() => methods.reset()} variant="secondary">
+          Limpiar
+        </Button>
+        <Button type="reset" variant="secondary">
+          Limpiar También
+        </Button>
       </form>
     </FormProvider>
   );
