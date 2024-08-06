@@ -1,0 +1,30 @@
+/* normalize css */
+
+* {
+  /* include padding and border in size calculation. */
+  box-sizing: border-box;
+
+  /* position based on immediate parent and allow abjustieng top/right/bottom/left. */
+  position: relative;
+
+  /* prevent grid and flex items for spilling out of their containers. */
+  min-width: 0;
+}
+
+body {
+  /* ensure that the body fills the entire viewport.*/
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  /* balance headings scroll mltiple lines into an even block. */
+  text-wrap: balance;
+}
+
+p {
+  /* prevent text orphans (single words on lant line). */
+  text-wrap: pretty;
+}
