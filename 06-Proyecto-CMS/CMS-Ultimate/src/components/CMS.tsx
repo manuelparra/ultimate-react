@@ -12,6 +12,8 @@ function CMS({}: Props) {
     setContacts([{ ...contact, id: Math.random().toString() }, ...contacts]);
   };
 
+  console.log(contacts);
+
   return (
     <div className="container">
       <div className="row">
@@ -21,7 +23,7 @@ function CMS({}: Props) {
       </div>
       <div className="row">
         <div className="col">
-          <ContactsTable />
+          <ContactsTable contacts={contacts} />
         </div>
       </div>
     </div>

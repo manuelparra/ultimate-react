@@ -10,18 +10,18 @@ export const contactTypeOptions = [
 export const contactSchema = z.object({
   name: z
     .string()
-    .min(1, { message: "El nmobre es requerido." })
+    .min(1, { message: "El nombre es requerido." })
     .min(3, { message: "El nombre debe tener al menos 3 caracteres." }),
   lastname: z
     .string()
-    .min(1, { message: "El nmobre es requerido." })
+    .min(1, { message: "El nombre es requerido." })
     .min(3, { message: "El nombre debe tener al menos 3 caracteres." }),
   email: z
     .string()
     .min(1, { message: "El correo es requerido." })
     .email("El correo es inválido."),
   type: z.enum(contactTypeOptions, {
-    errorMap: () => ({ message: "Seleccione un tipo valido." }),
+    errorMap: () => ({ message: "Seleccione un tipo válido." }),
   }),
 });
 
