@@ -2,6 +2,7 @@ import { useState } from "react";
 import ContactForm from "./ContactForm";
 import ContactsTable from "./ContactsTable";
 import { Contact } from "../schemas/Contact";
+import "./SwalAlert.css";
 
 type Props = {};
 
@@ -12,7 +13,9 @@ function CMS({}: Props) {
     setContacts([{ ...contact, id: Math.random().toString() }, ...contacts]);
   };
 
-  console.log(contacts);
+  const deleteContact = (id: string) => {
+    setContacts(contacts.filter((contact) => contact.id !== id));
+  };
 
   return (
     <div className="container">
@@ -23,7 +26,7 @@ function CMS({}: Props) {
       </div>
       <div className="row">
         <div className="col">
-          <ContactsTable contacts={contacts} />
+          <ContactsTable contacts={contacts} onClick={deleteContact} />
         </div>
       </div>
     </div>
