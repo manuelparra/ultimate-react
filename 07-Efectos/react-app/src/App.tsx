@@ -25,6 +25,8 @@ function App({}: Props) {
     setUsers(data);
   }, []);
 
+  console.log(users);
+
   const [token, setToken] = useState<string>("");
 
   useEffect(() => {
