@@ -1,8 +1,6 @@
 import { useEffect } from "react";
 
-type Props = {};
-
-function CuandoComo({}: Props) {
+function CuandoComo() {
   useEffect(() => {
     console.log("Dentro de useEffect", document.title);
     document.title = "Hola Mundo";

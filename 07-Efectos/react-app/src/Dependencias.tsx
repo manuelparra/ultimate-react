@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 
-type Props = {};
-
-function Dependencias({}: Props) {
+function Dependencias() {
   const [users, setUsers] = useState<string[]>([]);
   useEffect(() => {
     console.log("llamando al servidor...");

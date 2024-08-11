@@ -3,9 +3,7 @@ import SistemaLimpieza from "./SistemaLimpieza";
 import Dependencias from "./Dependencias";
 import Promesas from "./Promesas";
 
-type Props = {};
-
-function App({}: Props) {
+function App() {
   return (
     <>
       <CuandoComo />

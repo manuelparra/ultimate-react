@@ -1,8 +1,6 @@
 import { useEffect } from "react";
 
-type Props = {};
-
-function SistemaLimpieza({}: Props) {
+function SistemaLimpieza() {
   useEffect(() => {
     console.log("Cargando usuarios...");
 
