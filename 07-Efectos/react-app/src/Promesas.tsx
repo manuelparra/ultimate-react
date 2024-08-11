@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-
 type Props = {};
 
 function Promesas({}: Props) {
