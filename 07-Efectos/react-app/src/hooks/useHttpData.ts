@@ -30,5 +30,30 @@ export default function useHttpData<T>(url: string) {
     return () => controller.abort();
   }, []);
 
-  return { data, loading, error };
+  const addData = async (element: T) => {
+    const initialData = data;
+    setData([{ id: 0, ...element }, ...data]);
+
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        body: JSON.stringify(element),
+        headers: {
+          "Content-type": "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        setData(initialData);
+        throw new Error(`${response.status}`);
+      }
+      const savedData = await response.json();
+      console.log(savedData);
+      setData([savedData, ...initialData]);
+    } catch (error) {
+      setError((error as Error).message);
+    }
+  };
+
+  return { data, loading, error, addData };
 }

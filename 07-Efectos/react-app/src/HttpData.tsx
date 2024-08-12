@@ -1,14 +1,19 @@
 import useHttpData from "./hooks/useHttpData";
 
 type User = {
-  id: string;
+  id?: string;
   name: string;
 };
 
 function HttpData() {
   const url = "https://jsonplaceholder.typicode.com/users";
 
-  const { loading, error, data: users } = useHttpData<User>(url);
+  const {
+    loading,
+    error,
+    data: users,
+    addData: addUser,
+  } = useHttpData<User>(url);
 
   if (loading) {
     return <p>Cargando...</p>;
@@ -19,11 +24,16 @@ function HttpData() {
   }
 
   return (
-    <ul>
-      {users.map((user) => (
-        <li key={user.id}>{user.name}</li>
-      ))}
-    </ul>
+    <>
+      <button onClick={() => addUser({ name: "Chanchito feliz" })}>
+        Enviar
+      </button>
+      <ul>
+        {users.map((user) => (
+          <li key={user.id}>{user.name}</li>
+        ))}
+      </ul>
+    </>
   );
 }
 
