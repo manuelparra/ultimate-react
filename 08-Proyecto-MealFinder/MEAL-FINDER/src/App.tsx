@@ -8,7 +8,7 @@ import { CategoriesResponse, Category } from "./types";
 
 function App() {
   const url = "https://www.themealdb.com/api/json/v1/1/list.php?c=list";
-  const [data, setData] = useState<Category[]>();
+  const [data, setData] = useState<Category[]>([]);
   const [loading, setLoading] = useState(false);
 
   console.log(data);
@@ -37,8 +37,8 @@ function App() {
       <GridItem pl="2" bg="orange.300" area={"header"}>
         <Header />
       </GridItem>
-      <GridItem pl="2" bg="pink.300" area={"nav"} height="calc(100vh - 60px)">
-        <SideNav />
+      <GridItem p="5" area={"nav"} height="calc(100vh - 60px)">
+        <SideNav categories={data} loading={loading} />
       </GridItem>
       <GridItem pl="2" bg="green.300" area={"main"}>
         <MainContent />
