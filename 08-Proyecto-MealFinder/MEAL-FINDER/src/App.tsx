@@ -2,9 +2,9 @@ import { Grid, GridItem } from "@chakra-ui/react";
 import Header from "./components/Header";
 import SideNav from "./components/SideNav";
 import MainContent from "./components/MainContent";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { CategoriesResponse, Category } from "./types";
+import { useState } from "react";
+import { Category } from "./types";
+import useHttpData from "./hooks/useHttpData";
 
 function App() {
   const url = "https://www.themealdb.com/api/json/v1/1/list.php?c=list";
@@ -12,37 +12,8 @@ function App() {
   const [selectedCategory, setSelectedCategory] = useState<Category>({
     strCategory: "Beef",
   });
-  const [data, setData] = useState<Category[]>([]);
-  const [loading, setLoading] = useState(false);
 
-  console.log(data);
-
-  // realizamos la llamada a la API themealdb.com/api/json/v1/
-  useEffect(() => {
-    let ignore = false;
-    const controller = new AbortController();
-    const { signal } = controller;
-    setLoading(true);
-
-    axios
-      .get<CategoriesResponse>(url, { signal })
-      .then(({ data }) => {
-        if (!ignore) {
-          setData(data.meals);
-        }
-      })
-      .finally(() => {
-        if (!ignore) {
-          setLoading(false);
-        }
-      });
-
-    return () => {
-      ignore = true;
-      controller.abort();
-    };
-  }, []);
-
+  const { loading, data } = useHttpData<Category>(url);
   return (
     <Grid
       templateAreas={`"header header"
