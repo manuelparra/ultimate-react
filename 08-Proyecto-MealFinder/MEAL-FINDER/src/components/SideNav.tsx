@@ -4,6 +4,8 @@ import { Category } from "../types";
 type Props = {
   categories: Category[];
   loading: boolean;
+  selectedCategory: Category;
+  setSelectedCategory: (category: Category) => void;
 };
 
 const selectedProps = {
@@ -12,11 +14,12 @@ const selectedProps = {
   fontWeight: "bold",
 };
 
-function SideNav({ categories, loading }: Props) {
-  const selected = {
-    strCategory: "Beef",
-  };
-
+function SideNav({
+  categories,
+  loading,
+  selectedCategory,
+  setSelectedCategory,
+}: Props) {
   return (
     <>
       <Heading color="blue.400" fontSize={12} fontWeight="bold" mb={4}>
@@ -25,12 +28,14 @@ function SideNav({ categories, loading }: Props) {
       <VStack align="stretch">
         {categories.map((category) => (
           <Link
+            onClick={() => setSelectedCategory(category)}
             px={2}
             py={1}
             borderRadius={5}
             key={category.strCategory}
             _hover={{ textDecoration: "none" }}
-            {...(selected.strCategory == category.strCategory && selectedProps)}
+            {...(selectedCategory.strCategory == category.strCategory &&
+              selectedProps)}
           >
             {category.strCategory}
           </Link>
