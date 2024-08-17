@@ -4,10 +4,11 @@ import SideNav from "./components/SideNav";
 import MainContent from "./components/MainContent";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { CategoriesResponse, Category } from "./types";
 
 function App() {
   const url = "https://www.themealdb.com/api/json/v1/1/list.php?c=list";
-  const [data, setData] = useState();
+  const [data, setData] = useState<Category[]>();
   const [loading, setLoading] = useState(false);
 
   console.log(data);
@@ -19,7 +20,7 @@ function App() {
     setLoading(true);
 
     axios
-      .get(url, { signal })
+      .get<CategoriesResponse>(url, { signal })
       .then(({ data }) => setData(data.meals))
       .finally(() => setLoading(false));
 
