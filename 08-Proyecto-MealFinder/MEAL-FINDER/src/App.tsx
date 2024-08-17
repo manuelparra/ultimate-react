@@ -19,16 +19,28 @@ function App() {
 
   // realizamos la llamada a la API themealdb.com/api/json/v1/
   useEffect(() => {
+    let ignore = false;
     const controller = new AbortController();
     const { signal } = controller;
     setLoading(true);
 
     axios
       .get<CategoriesResponse>(url, { signal })
-      .then(({ data }) => setData(data.meals))
-      .finally(() => setLoading(false));
+      .then(({ data }) => {
+        if (!ignore) {
+          setData(data.meals);
+        }
+      })
+      .finally(() => {
+        if (!ignore) {
+          setLoading(false);
+        }
+      });
 
-    return () => controller.abort();
+    return () => {
+      ignore = true;
+      controller.abort();
+    };
   }, []);
 
   return (
