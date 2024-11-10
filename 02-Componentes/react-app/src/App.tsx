@@ -4,7 +4,7 @@ import List from "./components/List";
 import Button from "./components/Button";
 import SuperButton from "./components/SuperButton";
 
-const App = (): JSX.Element => {
+const App = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [dataMinions, setDataMinions] = useState([
     "Kevin",

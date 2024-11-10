@@ -6,7 +6,7 @@ type ButtonProps = {
   handleClick: () => void;
 };
 
-function Button(props: ButtonProps): JSX.Element {
+function Button(props: ButtonProps) {
   const { children, isLoading, handleClick } = props;
 
   return (

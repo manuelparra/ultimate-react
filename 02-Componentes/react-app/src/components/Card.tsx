@@ -1,14 +1,15 @@
-// code for Card component
+// Code for Card component
 // writed by: Manuel Parra
 // created: 06/07/2024
 // modified: 06/07/2024
+
 import { Fragment, ReactNode } from "react";
 
 interface CardProps {
   children: ReactNode;
 }
 
-function Card(props: CardProps): JSX.Element {
+function Card(props: CardProps) {
   const { children } = props;
 
   return (
@@ -29,7 +30,7 @@ interface CardBodyProps {
   text: string;
 }
 
-export function CardBody(props: CardBodyProps): JSX.Element {
+export function CardBody(props: CardBodyProps) {
   const { title, subtitle, text } = props;
 
   return (

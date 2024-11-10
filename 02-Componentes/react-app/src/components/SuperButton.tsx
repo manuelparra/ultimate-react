@@ -5,7 +5,7 @@ type SuperButtonProps = {
   handleClick: () => void;
 };
 
-function SuperButton(props: SuperButtonProps): JSX.Element {
+function SuperButton(props: SuperButtonProps) {
   const { children, handleClick } = props;
 
   return (

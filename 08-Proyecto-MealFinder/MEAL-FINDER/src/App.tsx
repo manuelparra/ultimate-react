@@ -44,7 +44,7 @@ function App() {
         />
       </GridItem>
       <GridItem pl="2" bg="green.300" area={"main"}>
-        <MainContent />
+        <MainContent loading={loadingMeal} meals={dataMeal} />
       </GridItem>
     </Grid>
   );
