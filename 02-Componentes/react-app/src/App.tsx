@@ -63,7 +63,7 @@ const App = () => {
   return (
     <div className="container text-center mt-3">
       <div className="row justify-content-evenly">
-        <div className="col">
+        <div className="col pt-3">
           <Card>
             <CardBody
               title="Mi tarjeta"
@@ -79,7 +79,7 @@ const App = () => {
             </Button>
           </Card>
         </div>
-        <div className="col">
+        <div className="col pt-3">
           <Card>
             <CardBody
               title="Trajeta Minions"
