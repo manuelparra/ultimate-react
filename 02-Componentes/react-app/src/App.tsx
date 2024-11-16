@@ -60,6 +60,15 @@ const App = () => {
     "Sin mininos para mostrar"
   );
 
+  const listFalsy: string[] = [];
+
+  const pruebaFalsy = !!listFalsy.length && (
+    <>
+      <List data={listFalsy} onSelect={handleSelect} />
+      <br />
+    </>
+  );
+
   return (
     <div className="container text-center mt-3">
       <div className="row justify-content-evenly">
@@ -74,6 +83,7 @@ const App = () => {
             <br />
             {masContenido}
             <br />
+            {pruebaFalsy}
             <Button handleClick={handleClick} isLoading={isLoading}>
               {isLoading ? "Cargando..." : "Ejecutar"}
             </Button>
