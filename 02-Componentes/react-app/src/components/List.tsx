@@ -18,6 +18,10 @@ function List(props: ListProps) {
     return Math.floor(Math.random() * max);
   };
 
+  if (index >= data.length) {
+    setIndex(data.length - 1);
+  }
+
   return (
     <>
       <ul className="list-group">
