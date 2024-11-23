@@ -7,7 +7,7 @@ type Props = {
   onClick: () => void;
 };
 
-function AlertByNS({ children, status, onClick }: Props): JSX.Element {
+function AlertByNS({ children, status, onClick }: Props) {
   return (
     <div
       className={[

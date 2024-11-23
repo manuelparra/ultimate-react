@@ -39,7 +39,7 @@ const style = {
   backgroundColor: "red",
 };
 
-function Button(props: ButtonProps): JSX.Element {
+function Button(props: ButtonProps) {
   const { children, isLoading, handleClick } = props;
 
   const className = [
@@ -62,7 +62,7 @@ function Button(props: ButtonProps): JSX.Element {
   );
 }
 
-export function ButtonTwo(props: BottonTwoProps): JSX.Element {
+export function ButtonTwo(props: BottonTwoProps) {
   const { children, isLoadingTwo, handleClick } = props;
 
   return (

@@ -9,7 +9,7 @@ type Props = {
   sent: boolean;
 };
 
-function ButtonByNS({ children, sent, onClick }: Props): JSX.Element {
+function ButtonByNS({ children, sent, onClick }: Props) {
   return (
     <button
       disabled={sent}

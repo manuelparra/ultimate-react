@@ -8,7 +8,7 @@ interface CardProps {
   children: ReactNode;
 }
 
-function Card(props: CardProps): JSX.Element {
+function Card(props: CardProps) {
   const { children } = props;
 
   return (
@@ -29,7 +29,7 @@ interface CardBodyProps {
   text: string;
 }
 
-export function CardBody(props: CardBodyProps): JSX.Element {
+export function CardBody(props: CardBodyProps) {
   const { title, subtitle, text } = props;
 
   return (

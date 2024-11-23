@@ -5,7 +5,7 @@ type ListProps = {
   onSelect?: (elemento: string) => void;
 };
 
-function List(props: ListProps): JSX.Element {
+function List(props: ListProps) {
   const { data, onSelect } = props;
   const [index, setIndex] = useState(0);
 
@@ -22,17 +22,15 @@ function List(props: ListProps): JSX.Element {
     <>
       <ul className="list-group">
         {data.length !== 0 ? (
-          data.map(
-            (elemento: string, indice: number): JSX.Element => (
-              <li
-                onClick={(): void => handleClick(elemento, indice)}
-                key={elemento.concat(`${getRandomInt(10000)}`)}
-                className={`list-group-item ${index == indice ? "active" : ""}`}
-              >
-                {elemento}
-              </li>
-            ),
-          )
+          data.map((elemento: string, indice: number) => (
+            <li
+              onClick={(): void => handleClick(elemento, indice)}
+              key={elemento.concat(`${getRandomInt(10000)}`)}
+              className={`list-group-item ${index == indice ? "active" : ""}`}
+            >
+              {elemento}
+            </li>
+          ))
         ) : (
           <p>Lista vacia</p>
         )}

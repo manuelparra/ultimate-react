@@ -17,7 +17,7 @@ const Alerta = styled.div<AlertaProps>`
   border-color: ${(props) => (props.isSelected ? "red" : "green")};
 `;
 
-function Alert(props: AlertProps): JSX.Element {
+function Alert(props: AlertProps) {
   const { children, isSelected, handleClickAlert } = props;
 
   return (

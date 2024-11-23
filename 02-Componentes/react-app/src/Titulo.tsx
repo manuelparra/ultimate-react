@@ -1,4 +1,4 @@
-function Titulo(): JSX.Element {
+function Titulo() {
   // jsx -> React.createElement()
 
   const nombre = "Chanchito Feliz";

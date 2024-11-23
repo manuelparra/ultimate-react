@@ -9,7 +9,7 @@ import ButtonByNS from "./components/ButtonByNS";
 import Button, { ButtonTwo } from "./components/Button";
 import SuperButton from "./components/SuperButton";
 
-const App = (): JSX.Element => {
+const App = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isLoadingTwo, setIsLoadingTwo] = useState(false);
   const [isSelected, setIsSelected] = useState(false);
