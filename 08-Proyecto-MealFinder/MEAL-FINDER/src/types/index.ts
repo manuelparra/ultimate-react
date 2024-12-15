@@ -1,9 +1,9 @@
 export type Category = {
-  strCategory: string;
+	strCategory: string;
 };
 
 export type Meal = {
-  strMeal: string;
-  strMealThumb: string;
-  idMeal: string;
+	strMeal: string;
+	strMealThumb: string;
+	idMeal: string;
 };
