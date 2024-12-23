@@ -2,13 +2,13 @@ import { ReactNode } from "react";
 import styled from "styled-components";
 
 type AlertaProps = {
-  isSelected: boolean;
+	isSelected: boolean;
 };
 
 type AlertProps = {
-  children: ReactNode;
-  isSelected: boolean;
-  handleClickAlert: () => void;
+	children: ReactNode;
+	isSelected: boolean;
+	handleClickAlert: () => void;
 };
 
 const Alerta = styled.div<AlertaProps>`
@@ -18,18 +18,18 @@ const Alerta = styled.div<AlertaProps>`
 `;
 
 function Alert(props: AlertProps) {
-  const { children, isSelected, handleClickAlert } = props;
+	const { children, isSelected, handleClickAlert } = props;
 
-  return (
-    <Alerta
-      className="alert alert-danger"
-      role="alert"
-      isSelected={isSelected}
-      onClick={handleClickAlert}
-    >
-      {children}
-    </Alerta>
-  );
+	return (
+		<Alerta
+			className="alert alert-danger"
+			role="alert"
+			isSelected={isSelected}
+			onClick={handleClickAlert}
+		>
+			{children}
+		</Alerta>
+	);
 }
 
 export default Alert;
