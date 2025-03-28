@@ -1,9 +1,7 @@
 import { FormEvent, useRef } from "react";
 
-type Props = {};
-
-function FormUncontrolled({}: Props) {
-  // para poder obtener el valor de los inputs utilizaremos el thook useRef, uncontrolled formulario
+function FormUncontrolled() {
+  // para poder obtener el valor de los inputs utilizaremos el hook useRef, uncontrolled formulario
   // basicamente useRef permite obetener referencias de estos campos de texte de modo que cuando algo
   // ocurra (un evento por ejemplo) entonces podemos ir a buscar el valor de estos.
   const nameRef = useRef<HTMLInputElement>(null);

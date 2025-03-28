@@ -30,6 +30,12 @@ function App() {
       <div className="container-fluid">
         <FormReactHookFormZod />
       </div>
+      <div className="mt-4">
+        <p>Second React Hook Form whit Zod</p>
+      </div>
+      <div className="container-fluid">
+        <FormReactHookFormZod />
+      </div>
     </div>
   );
 }

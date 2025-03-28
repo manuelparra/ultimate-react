@@ -1,8 +1,6 @@
 import { FormEvent, useState } from "react";
 
-type Props = {};
-
-function FormControlled({}: Props) {
+function FormControlled() {
   const [user, setUser] = useState({ name: "", lastname: "" });
 
   const handleSubmit = (event: FormEvent) => {
