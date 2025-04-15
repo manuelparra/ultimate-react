@@ -9,10 +9,7 @@ export default <T>() => {
     setLoading(true);
     axios
       .get(url)
-      .then(({ data }) => {
-        console.log(data.meals[0]);
-        setData(data.meals[0]);
-      })
+      .then(({ data }) => setData(data.meals[0]))
       .finally(() => setLoading(false));
   };
 
