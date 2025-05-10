@@ -3,8 +3,9 @@ import useTodosStore from "../todos/store";
 type Props = {};
 
 function Header({}: Props) {
-  const { todos } = useTodosStore();
-  return <div>{todos.length}</div>;
+  const total = useTodosStore((state) => state.total);
+  console.log("Header");
+  return <div>{total}</div>;
 }
 
 export default Header;
