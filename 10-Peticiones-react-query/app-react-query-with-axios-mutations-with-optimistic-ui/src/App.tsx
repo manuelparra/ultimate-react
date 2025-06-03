@@ -1,49 +1,13 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useRef } from "react";
+import type { Post } from "./types";
+import useCreatePost from "./hooks/useCreatePost";
+import useDeletePost from "./hooks/useDeletePost";
 
-type Props = {};
-
-type Post = {
-  id: number;
-  title: string;
-  body: string;
-  userId: number;
-};
-
-function App({}: Props) {
+function App() {
   const titleRef = useRef<HTMLInputElement>(null);
   const bodyRef = useRef<HTMLInputElement>(null);
-
-  const queryClient = useQueryClient();
-
-  const { mutate, isPending, error } = useMutation({
-    mutationFn: (post: Post) =>
-      axios
-        .post<Post>("https://jsonplaceholder.typicode.com/aposts", post)
-        .then((response) => response.data),
-    onMutate: (newPost) => {
-      const oldPosts = queryClient.getQueryData<Post[]>(["posts"]);
-      queryClient.setQueryData<Post[]>(["posts"], (post = []) => [
-        newPost,
-        ...post,
-      ]);
-
-      if (titleRef.current?.value && bodyRef.current?.value) {
-        titleRef.current.value = "";
-        bodyRef.current.value = "";
-      }
-      return oldPosts;
-    },
-    onSuccess: (savedPost, newPost) => {
-      queryClient.setQueryData<Post[]>(["post"], (posts = []) =>
-        posts.map((post) => (post.id === newPost.id ? savedPost : post)),
-      );
-    },
-    onError: (error, newPost, ctx) => {
-      queryClient.setQueryData<Post[]>(["posts"], ctx);
-    },
-  });
 
   const { data, isLoading } = useQuery({
     queryKey: ["posts"],
@@ -53,9 +17,17 @@ function App({}: Props) {
         .then((response) => response.data),
   });
 
+  const { mutate: deleteMutation } = useDeletePost();
+  const { mutate, isPending, error } = useCreatePost(() => {
+    if (titleRef.current?.value && bodyRef.current?.value) {
+      titleRef.current.value = "";
+      bodyRef.current.value = "";
+    }
+  });
+
   return (
     <>
-      <h2>Post</h2>
+      <h2>Post Manuel Parra</h2>
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -84,7 +56,13 @@ function App({}: Props) {
         </div>
       </form>
       {isLoading && <p>Cargando...</p>}
-      <ul>{data?.map((post) => <li key={post.id}>{post.title}</li>)}</ul>
+      <ul>
+        {data?.map((post) => (
+          <li onClick={() => deleteMutation(post)} key={post.id}>
+            {post.title}
+          </li>
+        ))}
+      </ul>
     </>
   );
 }
