@@ -1,10 +1,14 @@
+import { useNavigate } from "react-router-dom";
+
 type Props = {};
 
 function Home({}: Props) {
+  const navigate = useNavigate();
   return (
-    <div>
+    <>
       <h2>Hola mundo! Home.tsx</h2>
-    </div>
+      <button onClick={() => navigate("/product")}>Enviar</button>
+    </>
   );
 }
 
